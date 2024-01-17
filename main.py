@@ -14,22 +14,21 @@ from src.ani_helpers import *
 import P as P
 
 WRITE = 0
-FPS = 80  # Need 80
+FPS = 80
 
 Writer = animation.writers['ffmpeg']
 writer = Writer(fps=FPS, bitrate=3600)
 
-fig, ax_b = plt.subplots(figsize=(10, 6))   # pic  214 181
+fig, ax_b = plt.subplots(figsize=(10, 6))
 
 axs0 = []
 axs1 = []
 
 g = gen_objects.GenObjects()
-g.gen_backgr(ax_b, axs0, axs1)  # index 0 and 1 PERMANENT
+g.gen_backgr(ax_b, axs0, axs1)
 
 O0 = g.gen_O0()
 O0 = g.gen_O1(O0)
-
 
 brkpoint = ''
 '''VIEWER ==========================================='''
