@@ -21,7 +21,6 @@ class AbstractObject:
         _s.frame_ss = None
         _s.index_axs0 = None
         _s.pic = None
-        _s.pic_c = None  # copy of pic (might be useful if set_extent to be used with pic of certain color).
 
     def set_clock(_s, i):
         """
@@ -40,7 +39,7 @@ class AbstractObject:
         else:  # NEEDED BCS OTHERWISE _s.drawn just stays on 3
             _s.drawn = 0
 
-    def ani_update_step(_s, ax0, axs0, axs1, o2=False):
+    def ani_update_step(_s, ax0, axs0, axs1, object_type=None):
         """
         Based on the drawn condition, draw, remove
         If it's drawn, return True (used in animation loop)
@@ -58,7 +57,7 @@ class AbstractObject:
             return 0, None
         elif _s.drawn == 1: # start
             _s.index_axs0 = len(axs0)
-            if o2 == False:
+            if object_type == 'o1':
                 if _s.o0.id == 'projectiles':
                     axs0.append(ax0.imshow(_s.pic, zorder=_s.gi['zorder'], alpha=1, origin='lower', filternorm=False))  #, extent=[0, 14, 0, 19]))
                 elif _s.o0.id == 'waves':
@@ -69,7 +68,7 @@ class AbstractObject:
                     axs0.append(ax0.imshow(_s.pic, zorder=_s.gi['zorder'], alpha=1, origin='lower'))
 
                 _s.ax0 = axs0[_s.index_axs0]
-            else:
+            elif object_type == 'o2':
 
                 if _s.o0.id == 'projectiles':
                     axs0.append(ax0.plot(_s.xy[:, 0], _s.xy[:, 1], zorder=_s.gi['zorder'],

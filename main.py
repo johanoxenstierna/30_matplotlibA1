@@ -7,7 +7,6 @@ import random
 random.seed(7)  # ONLY HERE
 np.random.seed(7)  # ONLY HERE
 import time
-import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 from src import gen_objects
 from src.ani_helpers import *
@@ -35,7 +34,7 @@ brkpoint = ''
 
 
 def init():
-    return axs0 + axs1
+    return axs0 #+ axs1
 
 
 def animate(i):
@@ -79,7 +78,7 @@ def animate(i):
             if o1.drawn != 0:  # Its not just boolean!
                 o1.set_clock(i)
 
-                drawBool, index_removed = o1.ani_update_step(ax_b, axs0, axs1)
+                drawBool, index_removed = o1.ani_update_step(ax_b, axs0, axs1, object_type='o1')
                 if drawBool == 0:  # dont draw
                     continue
                 elif drawBool == 1:  # continue drawing
@@ -94,7 +93,7 @@ def animate(i):
                         # o2.set_frame_ss(i, o2.gi['frames_tot'], dynamic=False)  # MOVED UP
                     if o2.drawn != 0:  # This is the new condition. Hence it doesnt use f here. So f drawn does not have to be true.
                         o2.set_clock(i)
-                        drawBoolSP, index_removed = o2.ani_update_step(ax_b, axs0, axs1, o2=True)  # ADDED TO axs
+                        drawBoolSP, index_removed = o2.ani_update_step(ax_b, axs0, axs1, object_type='o2')  # ADDED TO axs
                         if drawBoolSP == 0:
                             continue
                         elif drawBoolSP == 1:
@@ -109,7 +108,7 @@ def animate(i):
 
     print(prints)
 
-    return axs0 + axs1  # 0 for dynamic objects, 1 for background
+    return axs0 #+ axs1  # 0 for dynamic objects, 1 for background
 
 
 sec_vid = ((P.FRAMES_STOP - P.FRAMES_START) / FPS)

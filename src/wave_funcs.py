@@ -53,46 +53,14 @@ def gerstner_wave(gi):
 
 		for i in range(0, frames_tot):  # could probably be replaced with np or atleast list compr
 
-			# f = k * (a - c * i)  # uses x origin?
 			f = k * np.dot(d, np.array([a, z])) - c * i  # uses x origin?
 
 			xy[i, 0] += stn * np.cos(f)
 			xy[i, 1] += stn * np.sin(f)
 
-			# xy[i, 0] = stn * np.cos(f + left_start)
-			# xy[i, 1] = stn * np.sin(f + left_start)
-
-			# dxy[i, 0] = 1 - stn * np.sin(f + left_start)
-			# dxy[i, 1] = stn * np.cos(f + left_start)  # THIS ONE WAS PROBABLY WRONGLY FLIPPED EARLIER.
-			# dxy[i, 2] = (stn * np.cos(f)) / (1 - stn * np.sin(f))
-
 			dxy[i, 0] += 1 - stn * np.sin(f)
 			dxy[i, 1] += stn * np.cos(f)  # THIS ONE WAS PROBABLY WRONGLY FLIPPED EARLIER.
-			dxy[i, 2] += (stn * np.cos(f)) / (1 - stn * np.sin(f))
-
-	# lower_bound_ids = np.where((xy[:, 1] < -0) & (dxy[:, 1] < 0))  # tricky DEPENDS ON STEEPNESS
-	# lower_bound_ids = np.where((dxy[:, 0] > -21) & (dxy[:, 1] < -18))  # tricky DEPENDS ON STEEPNESS
-	# upper_bound_ids = np.where((dxy[:, 0] < 26) & (dxy[:, 1] < 10))  # tricky DEPENDS ON STEEPNESS
-
-	# bounds_x = np.where((dxy[:, 0] > 0))
-	# bounds_y = np.where((dxy[:, 1] < 0))
-	#
-	# to_remove = np.intersect1d(bounds_x, bounds_y)
-	# xy[:, 0] += a
-	# xy[:, 1] += b
-
-	# alphas0 = - dxy[:, 0]
-	# alphas = min_max_normalization(alphas0, y_range=[1, 1])
-	# alphas = np.full(shape=(frames_tot,), fill_value=steepness)
-	# alphas = steepness * dxy[:, 1]
-
-	'''NORMALIZE gradient, then try'''
-	#
-	# xy[np.where(xy[:, 2] > 2)] = 2
-	# xy[np.where(xy[:, 2] < -2)] = -2
-
-	# dxy[np.where(dxy[:, 2] > 2), 2] = 2
-	# dxy[np.where(dxy[:, 2] < -2), 2] = -2
+			dxy[i, 2] += (stn * np.cos(f)) / (1 - stn * np.sin(f))  # gradient
 
 	dxy[:, 0] = min_max_normalization(dxy[:, 0], y_range=[0.01, 2 * np.pi])
 	dxy[:, 1] = min_max_normalization(dxy[:, 1], y_range=[0.01, 2 * np.pi])
@@ -103,21 +71,7 @@ def gerstner_wave(gi):
 
 	'''NEED TO SHIFT BY LEFT START SOMEHOW'''
 	alphas = xy[:, 0] + xy[:, 1] + dxy[:, 1]   # left_start ONLY affects o1
-	# alphas = dxy[:, 0] + dxy[:, 1]   # left_start ONLY affects o1
-	# alphas = dxy[:, 2]
 	alphas = min_max_normalization(alphas, y_range=[0.1, 0.5])
-
-	# center = 100
-	# lo = center - 50
-	# up = center + 50
-
-	# alphas[lo:up] = 0
-
-	# lower_bound_ids = np.where((T[:, 0] > -30) & (T[:, 1] > 30))  # tricky DEPENDS ON STEEPNESS
-	# alphas[to_remove] = 0
-	# alphas[upper_bound_ids] = 0
-	# lower_bound_ids = np.where(T[:, 0] < -45)  # tricky DEPENDS ON STEEPNESS
-	# alphas[lower_bound_ids] = 0
 
 	return xy, alphas
 

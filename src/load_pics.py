@@ -39,20 +39,17 @@ def load_pics():
                 if folder_name1 == 'O1':
                     pic = imread(PATH + folder_name0 + '/' + folder_name1 + '/' + file_name)  # without .png
 
-
                     if folder_name0 == 'projectiles':
                         for i in range(P.NUM_O1_PROJS):
                             pics['O0'][folder_name0][folder_name1][file_name[:-4] + '_' + str(i)] = pic
 
                     if folder_name0 == 'waves':
                         for i in range(P.NUM_O1_WAVES):
-                            # pics['O0'][folder_name0][folder_name1][file_name[:-4] + '_' + str(i)] = pic
                             pics['O0'][folder_name0][folder_name1][str(i)] = pic
 
                     if folder_name0 == 'clouds':
                         # pic = np.flipud(pic)
                         for i in range(P.NUM_O1_CLOUDS):
-                            # pics['O0'][folder_name0][folder_name1][file_name[:-4] + '_' + str(i)] = pic
                             pics['O0'][folder_name0][folder_name1][file_name[:-4] + '_' + str(i)] = pic
 
     return pics

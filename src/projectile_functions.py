@@ -24,7 +24,8 @@ def simple_projectile(gi=None):
     '''
     OBS since projectile is launched from a height, the calculation is different:
     https://www.omnicalculator.com/physics/time-of-flight-projectile-motion
-    from ground level: t_flight = 4 * gi['v'] * np.sin(gi['theta']) / G  # 4 means they land at origin. 5 little bit below
+    from ground level: 
+    t_flight = 4 * gi['v'] * np.sin(gi['theta']) / G  # 4 means they land at origin. 5 little bit below
     
     '''
     t_flight = (gi['v'] * np.sin(gi['theta']) + np.sqrt((gi['v'] * np.sin(gi['theta']))**2 + 2 * G * h)) / G

@@ -52,12 +52,6 @@ class O1C(AbstractObject, AbstractSSS):
             _s.gi['steepness'] = _s.o0.gi.o1_steepnessess[id_int] #+ np.random.randint(low=0, high=50, size=1)[0]
             _s.gi['o1_left_start'] = _s.o0.gi.o1_left_starts[id_int] #+ np.random.randint(low=0, high=50, size=1)[0]
 
-        # elif _s.o0.id == 'clouds':
-        #     _s.gi['init_frames'] = [_s.o0.gi.o1_init_frames[0]]
-
-
-        adf = 5
-
     def gen_scale_vector(_s):
 
         scale_ss = []

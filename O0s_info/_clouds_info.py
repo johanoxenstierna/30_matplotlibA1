@@ -39,8 +39,9 @@ class Clouds_info:
         i1 = [300] * 100
         i2 = [600] * 100
         i3 = [900] * 100
+        i4 = [1200] * 100
 
-        _s.o1_init_frames = i0 + i1 + i2 + i3
+        _s.o1_init_frames = i0 + i1 + i2 + i3 + i4
         _s.o1_down_offsets = np.linspace(0, 50, num=P.NUM_O1_PROJS)
 
     def gen_o1_gi(_s):
