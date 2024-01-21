@@ -14,10 +14,10 @@ FRAMES_TOT = FRAMES_STOP - FRAMES_START
 # A_O1 = 1
 
 NUM_O1_PROJS = 3  # this is multiplied with num pics
-NUM_PROJ_O2_PER_O1 = 60  # used by 0, 5, 6  can be reduced for big bug
+NUM_PROJ_O2_PER_O1 = 20  # used by 0, 5, 6  can be reduced for big bug
 
-NUM_O1_WAVES = 15  # 15  # these two give xz wave mesh extent
-NUM_WAVE_O2_PER_O1 = 30  #30  # 20 HAS IMPACT ON WAVE
+NUM_O1_WAVES = 5  # 15  # these two give xz wave mesh extent
+NUM_WAVE_O2_PER_O1 = 15  #30  # 20 HAS IMPACT ON WAVE
 
 NUM_O1_CLOUDS = 20  # 20  # per pic  720 (called x in the name)
 NUM_INIT_FRAMES_CLOUD = 5

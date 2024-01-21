@@ -26,21 +26,9 @@ class GenObjects:
 
     def gen_backgr(_s, ax_b, axs0, axs1):
 
-        # if P.ARS == 0:  # shouldnt matter whether added to axs0 or axs1
-        # axs1.append(ax0.imshow(_s.pics['backgr_d'], zorder=1, alpha=1))  # index 0
+        """UPDATED!!!"""
         ax_b.imshow(_s.pics['backgr_d'], zorder=1, alpha=1)  # index 0
-        # else:
-        # axs1.append(ax0.imshow(_s.pics['backgr_ars'], zorder=2, alpha=1))  # index 1
-
         ax_b.axis([0, P.MAP_DIMS[0], P.MAP_DIMS[1], 0])
-            # ax.axis([-30, 254, 133, -30])
-            # ax.axis([0, 214, 0, 181])
-            # ax.axis([0, 214, 181, 0])
-            # ax.axis([0, 571, 0, 500])
-        # else:
-        #     ax.axis([0, 1280, 0, 720])
-        # ax.invert_yaxis()  # ONLY IF SHIPS?
-        # ax.grid()
         ax_b.axis('off')  # TURN ON FOR FINAL
 
     def gen_O0(_s):

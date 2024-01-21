@@ -142,7 +142,7 @@ if __name__ == '__main__':
 	'''
 
 	# # # # WAVE alpha NOT EXPL! ALpha 1 in beg cuz it starts real small ============
-	X = np.arange(1, 300)
+	# X = np.arange(1, 300)
 	# # # Y = _normal(X, mean=len(X) // 2, var=len(X) // 4, y_range=[0, 0.15])  # alpha
 	# Y = ([_sigmoid(x, grad_magn_inv=-len(X) / 12, x_shift=-4, y_magn=22, y_shift=0) for x in X])  # expl alpha
 	# Y = np.asarray([_sigmoid(x, grad_magn_inv=-len(X) / 10, x_shift=-2, y_magn=40, y_shift=0) for x in X])  # expl alpha
@@ -207,7 +207,8 @@ if __name__ == '__main__':
 	# Y = np.exp(input)  # X motion
 
 	# CLOUD alpha =====
-	# Y = _normal(X, mean=150, var=100, y_range=[0, 0.2])
+	X = np.arange(1, 300)
+	Y = _normal(X, mean=150, var=100, y_range=[0, 1])
 
-
+	ax0 = plt.plot(X, Y)
 	plt.show()
