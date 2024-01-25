@@ -17,7 +17,7 @@ def gerstner_wave(gi):
 	k = 2 * np.pi / lam  # wavenumber
 	c = 0.5
 	# c = -np.sqrt(9.8 / k)
-	steepness = gi['steepness']
+	steepness_abs = gi['steepness']
 
 	left_start = gi['o1_left_start']
 
@@ -39,17 +39,17 @@ def gerstner_wave(gi):
 
 		if w == 0:  # OBS ADDIND WAVES LEADS TO WAVE INTERFERENCE!!!
 			d = np.array([1, 0])
-			steepness = 0.5
+			steepness_abs = 0.5
 			c = 0.02  # prop to FPS EVEN MORE  from 0.2 at 20 FPS to. NEXT: Incr frames_tot for o2 AND o1
 		elif w == 1:
 			d = np.array([0.5, 1])
-			steepness = 0.3
+			steepness_abs = 0.3
 			c = 0.06  # from 0.6 -> 0.06
 		# else:
 		# 	d = np.array([0.5, 0])
 		# 	steepness = gi['steepness']
 
-		stn = steepness / k
+		stn = steepness_abs / k
 
 		for i in range(0, frames_tot):  # could probably be replaced with np or atleast list compr
 

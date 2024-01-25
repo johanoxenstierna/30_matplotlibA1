@@ -29,10 +29,9 @@ def decrement_all_index_axs0(index_removed, O0, waves=None):
 					if o2.index_axs0 > index_removed:
 						o2.index_axs0 -= 1
 
-	# '''
-	# PAINFUL 30 min BUG HERE
-	# DANGER: THIS SEEMS TO MESS UP ABOVE: SOLUTION: ALWAYS HAVE SP AS CHILD OF SR
-	# '''
+	#
+	# PAINFUL 30 min BUG HERE (something messed up above)
+	#
 	# for sp_key, sp in sh.sps.items():
 	# 	if sp.index_axs0 != None and sp.o1 == None:
 	# 		if sp.index_axs0 > index_removed:

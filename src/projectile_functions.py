@@ -30,7 +30,6 @@ def simple_projectile(gi=None):
     '''
     t_flight = (gi['v'] * np.sin(gi['theta']) + np.sqrt((gi['v'] * np.sin(gi['theta']))**2 + 2 * G * h)) / G
 
-    # t = np.linspace(0, t_flight, gi['frames_tot'])
     t_lin = np.linspace(0, t_flight, gi['frames_tot'])
     # t_geo = np.geomspace(0.08, t_flight ** 1.2, gi['frames_tot'])
     # t_geo_0 = np.geomspace(0.5, t_flight ** 1, gi['frames_tot'])  # POWER CONTROLS DISTANCE
@@ -48,8 +47,6 @@ def simple_projectile(gi=None):
     '''If theta is close enough '''
     y = gi['v'] * np.sin(gi['theta']) * 2 * t_lin - 0.5 * G * t_lin ** 2
 
-    adf = - 0.5 * G * t_lin ** 2
-    gg = np.sin(gi['theta'])
     # y_lin = gi['v'] * np.sin(gi['theta']) * 2 * t_lin #- 0.5 * G * t_lin ** 2  # OBS OBS this affect both up and down equally
     # y_geo = gi['v'] * np.sin(gi['theta']) * 2 * t_geo_1 - 0.5 * G * t_geo_1 ** 2
 
